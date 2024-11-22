@@ -40,6 +40,16 @@
                 showConfirmButton: false,
                 timer: 1500
             });
+            $('.cell1').text("")
+            $('.cell2').text("")
+            $('.cell3').text("")
+            $('.cell4').text("")
+            $('.cell5').text("")
+            $('.cell6').text("")
+            $('.cell7').text("")
+            $('.cell8').text("")
+            $('.cell9').text("")
+            $counter = 1;
 
         }
 
@@ -114,6 +124,16 @@
                                 $counter = 1;
                             } else if (result.isDenied) {
                                 Swal.fire("AAADIIII 😭", "", "SUCCESS");
+                                $('.cell1').text("")
+                                $('.cell2').text("")
+                                $('.cell3').text("")
+                                $('.cell4').text("")
+                                $('.cell5').text("")
+                                $('.cell6').text("")
+                                $('.cell7').text("")
+                                $('.cell8').text("")
+                                $('.cell9').text("")
+                                $counter = 1;
                             }
                         });
                     }
