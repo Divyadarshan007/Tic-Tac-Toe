@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="game-container">
+        <h1>Tic Tac Toe</h1>
+        <div id="tic-tac-toe">
+            <div class="cell cell1"></div>
+            <div class="cell cell2"></div>
+            <div class="cell cell3"></div>
+            <div class="cell cell4"></div>
+            <div class="cell cell5"></div>
+            <div class="cell cell6"></div>
+            <div class="cell cell7"></div>
+            <div class="cell cell8"></div>
+            <div class="cell cell9"></div>
+        </div>
+        <button id="reset">Reset Game</button>
+        <div id="status"></div>
+    </div>
+
+
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script src="swal.js"></script>
+    <script>
+        $(document).ready(function () {
+            $counter = 1;
+
+            $('.cell').on('click', function () {
+
+                if ($(this).text() != '') {
+                    return;
+                }
+                if ($counter % 2 == 0) {
+                    $(this).text('O')
+                    $counter++;
+                } else {
+                    $(this).text('X')
+                    $counter++;
+                }
+                $t1 = $('.cell1').text()
+                $t2 = $('.cell2').text()
+                $t3 = $('.cell3').text()
+                $t4 = $('.cell4').text()
+                $t5 = $('.cell5').text()
+                $t6 = $('.cell6').text()
+                $t7 = $('.cell7').text()
+                $t8 = $('.cell8').text()
+                $t9 = $('.cell9').text()
+
+                if ($counter >= 4) {
+                    if ($t1 != "" && ($t1 == $t2) && ($t2 == $t3)) {
+                        $('#status').text($t1 + " WINS ")
+                        console.log(1);
+                    } else if ($t4 != "" && ($t4 == $t5) && ($t5 == $t6)) {
+                        $('#status').text($t4 + " WINS ")
+                        console.log(2);
+                    } else if ($t7 != "" && ($t7 == $t8) && ($t8 == $t9)) {
+                        $('#status').text($t7 + " WINS ")
+                        console.log(3);
+                    }
+                    else if ($t1 != "" && ($t1 == $t4) && ($t4 == $t7)) {
+                        $('#status').text($t1 + " WINS ")
+                        console.log(4);
+                    }
+                    else if ($t2 != "" && ($t2 == $t5) && ($t5 == $t8)) {
+                        $('#status').text($t2 + " WINS ")
+                        console.log(5);
+                    }
+                    else if ($t3 != "" && ($t3 == $t6) && ($t6 == $t9)) {
+                        $('#status').text($t3 + " WINS ")
+                        console.log(6);
+                    }
+                    else if ($t1 != "" && ($t1 == $t5) && ($t5 == $t9)) {
+                        $('#status').text($t1 + " WINS ")
+                        console.log(7);
+                    }
+                    else if ($t3 != "" && ($t3 == $t5) && ($t5 == $t7)) {
+                        $('#status').text($t3 + " WINS ")
+                        console.log(8);
+                    } else if ($counter > 9) {
+                        Swal.fire({
+                            title: 'GAME DRAW',
+                            text: 'Do you want to continue ?',
+                            icon: 'question',
+                            showDenyButton: true,
+                            showCancelButton: false,
+                            confirmButtonText: "YES COOL 😎",
+                            denyButtonText: `NO 😢`
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                $('.cell1').text("")
+                                $('.cell2').text("")
+                                $('.cell3').text("")
+                                $('.cell4').text("")
+                                $('.cell5').text("")
+                                $('.cell6').text("")
+                                $('.cell7').text("")
+                                $('.cell8').text("")
+                                $('.cell9').text("")
+                                $counter = 1;
+                            } else if (result.isDenied) {
+                                Swal.fire("AAADIIII", "", "SUCCESS");
+                            }
+                        });
+                    }
+                }
+            })
+        })
+    </script>
+
+</body>
+
+</html>
